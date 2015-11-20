@@ -78,7 +78,7 @@ def setup():
     GPIO.pwmWrite(TAIL_SERVO, 0)
 
     # volume setting 7F(Max)
-    midiOutput.write_short(0xB0, 7, 127) 
+    # midiOutput.write_short(0xB0, 7, 127) 
 
 
 # WebIOPiにより繰り返される関数
@@ -107,6 +107,7 @@ def pwm4Write(duty1, duty2, duty3, duty4, commandID):
 def setHwPWM(duty, commandID):
     wiringpi.pwmWrite(18, getServoDutyForWebIOPi(float(duty)))
 
+"""
 @webiopi.macro
 def sayHello(tmp):
     # setting lyric by sending SysEx for python3
@@ -203,5 +204,5 @@ def singSong(tmp):
     sleep(.400)
     midiOutput.note_off(72,80)
     midiOutput.write_short(0xB0, 0x5B, 0x10)
-
+"""
 
