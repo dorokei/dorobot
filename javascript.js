@@ -56,9 +56,9 @@ function imageSetup(){
   var host = location.host;
   var hostname = host.split(":")[0];
 
-  var port= 9000;
+  var port= 8080;
   URL1 = 'http://' + hostname + ':' + port + '/?action=snapshot';
-  URL2 = 'http://' + hostname + ':8000/m2/img/CrawlerControllerTrans.png';
+  URL2 = 'http://' + hostname + ':8000/img/CrawlerControllerTrans.png';
 
   mCanvas = document.getElementById("canvas");
   mCtx = mCanvas.getContext('2d');
