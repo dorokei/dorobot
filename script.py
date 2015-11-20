@@ -4,8 +4,8 @@ import time
 import wiringpi2 as wiringpi
 import os
 
-import pygame
-import pygame.midi
+# import pygame
+# import pygame.midi
 from time import sleep
 
 import subprocess
@@ -25,19 +25,19 @@ TAIL_SERVO = 4
 
 
 # pokemiku setting
-instrument = 0 # miku
-port = 2 # NSX-39
+# instrument = 0 # miku
+# port = 2 # NSX-39
  
-pygame.init()
-pygame.midi.init()
+# pygame.init()
+# pygame.midi.init()
 
 # for python3
 #for id in range(pygame.midi.get_count()):
 #	print (id)
 #	print (pygame.midi.get_device_info(id))
  
-midiOutput = pygame.midi.Output(port)
-midiOutput.set_instrument(instrument)
+# midiOutput = pygame.midi.Output(port)
+# midiOutput.set_instrument(instrument)
  
 def getServoDutyForWebIOPi(val):
     val_min = 0.0
