@@ -16,10 +16,14 @@ shutter_numb = 0
 home_dir = '/home/pi/photo'
 
 # port setting
-PWM1  = 25
-PWM2  = 24
-PWM3  = 23
-PWM4  = 22
+#PWM1  = 25
+#PWM2  = 24
+#PWM3  = 23
+#PWM4  = 22
+PWM1  = 24
+PWM2  = 23
+PWM3  = 22
+PWM4  = 27
 CAMERA_SERVO = 18
 TAIL_SERVO = 4
 

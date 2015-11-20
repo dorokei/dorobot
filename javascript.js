@@ -100,7 +100,7 @@ function touchEvent(e){
     var height = width*3/4;
 
     if(touch.pageX<width/3){ // 左旋回
-        var rate = maxSpeed*(width/3-touch.pageX)/(width/3);
+        var rate = maxSpeed; //*(width/3-touch.pageX)/(width/3);
 
         // 前回送信時と値が大きく違うときのみ送信
         if(Math.abs(rate-rate24Prev)>th || Math.abs(rate-rate23Prev)>th){
@@ -112,11 +112,11 @@ function touchEvent(e){
         }
     }else if(touch.pageX<2*width/3){ // 前後移動
         // 左右の車輪の速さの違いの補正
-        var modL = (1.2-0.8)*(touch.pageX-width/3)/(width/3) + 0.8;
-        var modR = (0.8-1.2)*(touch.pageX-width/3)/(width/3) + 1.2;
+        var modL = 1; //(1.2-0.8)*(touch.pageX-width/3)/(width/3) + 0.8;
+        var modR = 1; //(0.8-1.2)*(touch.pageX-width/3)/(width/3) + 1.2;
 
         if(touch.pageY<height/2){
-            var rate = maxSpeed*(height/2-touch.pageY)/(height/2);
+            var rate = maxSpeed; //*(height/2-touch.pageY)/(height/2);
             modL *= rate;
             modR *= rate;
 
@@ -132,7 +132,7 @@ function touchEvent(e){
                 rate22Prev = 0;
             }
         }else{
-            var rate = maxSpeed*(touch.pageY-height/2)/(height/2);
+            var rate = maxSpeed; //*(touch.pageY-height/2)/(height/2);
             modL *= rate;
             modR *= rate;
 
@@ -150,7 +150,7 @@ function touchEvent(e){
         }
 
     }else if(touch.pageX<width){ // 右旋回
-        var rate = maxSpeed*(touch.pageX - 2*width/3)/(width/3);
+        var rate = maxSpeed; //*(touch.pageX - 2*width/3)/(width/3);
 
         // 前回送信時と値が大きく違うときのみ送信
         if(Math.abs(rate-rate25Prev)>th || Math.abs(rate-rate22Prev)>th){
