@@ -93,6 +93,7 @@ function imageSetup(){
 }
 
 function touchEvent(e){
+    console.log("touchEvent");
     e.preventDefault();
 
     var touch = e.touches[0];  
@@ -166,6 +167,8 @@ function touchEvent(e){
 
 // タッチ終了時のイベントリスナー
 function touchEndEvent(e){
+    
+    console.log("touchEndEvent");
     e.preventDefault();
 
     webiopi().callMacro("pwm4Write", [0, 0, 0, 0, commandID++]);
@@ -178,11 +181,14 @@ function touchEndEvent(e){
 // クリック時のイベントリスナー（主にPC用）
 function clickEvent(e){
 
+    console.log("clickEvent");
+
     var width = viewScale*document.getElementById("touchArea").offsetWidth;
     var height = width*3/4;
 
     if(e.pageX<width/3){ // 左旋回
-        var rate = maxSpeed*(width/3-e.pageX)/(width/3);
+        console.log("clickEvent - 左旋回");
+        var rate = maxSpeed; //*(width/3-e.pageX)/(width/3);
 
         webiopi().callMacro("pwm4Write", [0, rate, rate, 0, commandID++]);
         rate25Prev = 0;
@@ -190,18 +196,21 @@ function clickEvent(e){
         rate23Prev = rate;
         rate22Prev = 0;
     }else if(e.pageX<2*width/3){ // 前後移動
+        console.log("clickEvent - 前後移動");
         // 左右の車輪の速さの違いの補正
-        var modL = (1.2-0.8)*(e.pageX-width/3)/(width/3) + 0.8;
-        var modR = (0.8-1.2)*(e.pageX-width/3)/(width/3) + 1.2;
+        var modL = 1; //(1.2-0.8)*(e.pageX-width/3)/(width/3) + 0.8;
+        var modR = 1; //(0.8-1.2)*(e.pageX-width/3)/(width/3) + 1.2;
 
         if(e.pageY>=2*height/5 && e.pageY<3*height/5){
+            console.log("clickEvent - 前後移動 - 静止");
             webiopi().callMacro("pwm4Write", [0, 0, 0, 0, commandID++]);
             rate25Prev = 0;
             rate24Prev = 0;
             rate23Prev = 0;
             rate22Prev = 0;
         }else if(e.pageY<height/2){
-            var rate = maxSpeed*(height/2-e.pageY)/(height/2);
+            console.log("clickEvent - 前後移動 - 前進");
+            var rate = maxSpeed; //*(height/2-e.pageY)/(height/2);
             modL *= rate;
             modR *= rate;
 
@@ -214,7 +223,8 @@ function clickEvent(e){
             rate23Prev = modR;
             rate22Prev = 0;
         }else{
-            var rate = maxSpeed*(e.pageY-height/2)/(height/2);
+            console.log("clickEvent - 前後移動 - 後退");
+            var rate = maxSpeed; //*(e.pageY-height/2)/(height/2);
             modL *= rate;
             modR *= rate;
 
@@ -229,7 +239,8 @@ function clickEvent(e){
         }
 
     }else if(e.pageX<width){ // 右旋回
-        var rate = maxSpeed*(e.pageX - 2*width/3)/(width/3);
+        console.log("clickEvent - 右旋回");
+        var rate = maxSpeed; //*(e.pageX - 2*width/3)/(width/3);
 
         webiopi().callMacro("pwm4Write", [rate, 0, 0, rate, commandID++]);
         rate25Prev = rate;
